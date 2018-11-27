@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cadastrar</title>
+    </head>
+    <body>
+        <div style="width: 60%; text-align: center; margin: 10% auto;">
+            <h2>Cadastrar</h2>
+            <form action="cadastrar.php" method="POST">
+                <p>
+                    <label for="nome">Seu Nome</label>
+                    <input type="text" id="nome" placeholder="Nome" name="nome" maxlength="50" required>
+                </p>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Email" name="email" maxlength="50" required>
+                </p>
+                <p>
+                    <label for="login">Login</label>
+                    <input type="text" id="login" placeholder="Login" name="login" maxlength="15" required>
+                </p>
+                <p>
+                    <label for="Senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Senha" name="senha" maxlength="30" required>
+                </p>
+                <button type="submit" name="cadastrar">Cadastrar</button>
+                <a href="../">
+                    <button type="button" class="btn btn-primary" name="voltar">Voltar</button>
+                </a>
+            </form>
+        </div>
+    </body>
+</html>

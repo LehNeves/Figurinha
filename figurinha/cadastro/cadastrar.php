@@ -51,6 +51,7 @@
         session_start();
         $_SESSION['nome'] = $nome;
         echo "<script>alert('Dados não aceito pelo Banco de Dados');window.location.href='index.html';</script>";
+        echo "<script>alert('Bem vindo $nome');</script>";
     }
     mysqli_close($conexao);
     

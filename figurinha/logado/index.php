@@ -5,6 +5,8 @@
     if(!gerarUltimoAcesso($dateTime, $conexao)){
         echo "<script>alert('Erro ao passar Ultimo Acesso');</script>";
     }
+
+    
     
 
 ?>

@@ -8,7 +8,7 @@
         include "bd/conexao.php";
         $login = $_POST['login'];
         $senha = $_POST['senha'];
-        $sql = "SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha'";
 
         $consulta =  mysqli_query($conexao, $sql);
         //Caso não exista o if abaixo é true e ele não consegue acessar

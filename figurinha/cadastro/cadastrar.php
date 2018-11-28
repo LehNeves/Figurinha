@@ -48,6 +48,8 @@
     if(mysqli_query($conexao, $insert)){
         echo "<script>window.location.href='../logado';</script>";
     }else{
+        session_start();
+        $_SESSION['nome'] = $nome;
         echo "<script>alert('Dados não aceito pelo Banco de Dados');window.location.href='index.html';</script>";
     }
     mysqli_close($conexao);

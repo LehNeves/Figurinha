@@ -7,9 +7,9 @@
     $nomeUser = $_SESSION['nome'];
 
     date_default_timezone_set('America/Sao_Paulo');
-    $dateTime = date('Y/m/d H:i:s', time());
-
-    function gerarUltimoAcesso($dateTime, $conexao){
+    
+    function gerarUltimoAcesso($conexao){
+        $dateTime = date('Y/m/d H:i:s', time());
         $update = "UPDATE `usuarios` SET `ultimoAcesso` = '$dateTime' WHERE `nome` = 'admin'"; 
 
         $resultado =  mysqli_query($conexao, $update);

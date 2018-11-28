@@ -1,7 +1,7 @@
 <?php
     include 'verificar.php';
 
-    if(!gerarUltimoAcesso($dateTime, $conexao)){
+    if(!gerarUltimoAcesso($conexao)){
         echo "<script>alert('Erro ao passar Ultimo Acesso');</script>";
     }
 
@@ -15,7 +15,7 @@
     </head>
     <body>
         
-        <a href=""><button>Ganhar Figurinhas</button></a>
-
+        <a href="ganhar.php"><button name='ganhar'>Ganhar Figurinhas</button></a>
+        <a href="deslogar.php"><button name='deslogar'>Sair</button></a>
     </body>
 </html>

@@ -41,15 +41,15 @@
         die();
     }
     var_dump($senha);
-    /*
+    
     //fazendo os codigos sql para inserção no banco de dados
-    $insert = "INSERT INTO usuario VALUES (null, '$nome', '$email', '$login', '$senha', '0-0-0 0:0:0', '0-0-0 0:0:0')";
+    $insert = "INSERT INTO usuarios VALUES (null, '$nome', '$email', '$login', '$senha', '0-0-0 0:0:0', '0-0-0')";
     
     if(mysqli_query($conexao, $insert)){
-        echo "<script>alert('Bem vindo $nome!');window.location.href='../logado';</script>";
+        echo "<script>window.location.href='../logado';</script>";
     }else{
         echo "<script>alert('Dados não aceito pelo Banco de Dados');window.location.href='index.html';</script>";
     }
     mysqli_close($conexao);
-    */
+    
 ?>  

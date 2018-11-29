@@ -20,9 +20,14 @@
     }
 
     function ganharFigurinhas($conexao, $idUser, $aleatorio){
-        $select = "INSERT INTO usuariosfigurinhas(usuarios_id, figurinha_id) VALUES ($idUser, $aleatorio)";
+        $insert = "INSERT INTO usuariosfigurinhas(usuarios_id, figurinha_id) VALUES ($idUser, $aleatorio)";
 
-        
+        if(mysqli_query($conexao, $insert)){
+            echo "<script>alert('Parabéns! Voce Ganhou as figurinhas do dia, volte amanhã.');</script>";
+        }else{
+            echo "<script>alert('Erro ao gerar figurinhas.');</script>";
+        }
+
     }
 
     function buscarFigurinhas($select, $idUser, $conexao){

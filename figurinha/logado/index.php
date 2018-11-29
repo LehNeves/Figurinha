@@ -14,21 +14,22 @@
     <body>
         <a href="ganhar.php"><button name='ganhar'>Ganhar Figurinhas</button></a>
         <a href="deslogar.php"><button name='deslogar'>Sair</button></a>
-
-        <?php
-            $select = "SELECT figurinhas.* 
-            FROM figurinhas, usuariosfigurinhas, usuarios 
-            WHERE usuarios.id = $idUser 
-            AND usuarios.id = usuariosfigurinhas.usuarios_id 
-            AND usuariosfigurinhas.figurinha_id = figurinhas.id";
-            $vetor = buscarFigurinhas($select, $idUser, $conexao);
-            if($vetor != -1){
-                foreach ($vetor as $key => $valor) {
-                    echo "<img src='img/$valor[caminho]' alt=''>";
+        <p>
+            <?php
+                $select = "SELECT figurinhas.* 
+                FROM figurinhas, usuariosfigurinhas, usuarios 
+                WHERE usuarios.id = $idUser 
+                AND usuarios.id = usuariosfigurinhas.usuarios_id 
+                AND usuariosfigurinhas.figurinha_id = figurinhas.id";
+                $vetor = buscarFigurinhas($select, $idUser, $conexao);
+                if($vetor != -1){
+                    foreach ($vetor as $key => $valor) {
+                        echo "<img src='img/$valor[caminho]' alt=''>";
+                    }
+                }else{
+                    echo "<p>Voce não possui nenhuma figurinha</p>";
                 }
-            }else{
-                echo "<p>Voce não possui nenhuma figurinha</p>";
-            }
-        ?>
+            ?>
+        </p>
     </body>
 </html>

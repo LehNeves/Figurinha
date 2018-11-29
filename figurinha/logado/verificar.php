@@ -23,7 +23,7 @@
         $insert = "INSERT INTO usuariosfigurinhas(usuarios_id, figurinha_id) VALUES ($idUser, $aleatorio)";
 
         if(mysqli_query($conexao, $insert)){
-            echo "<script>alert('Parabéns! Voce Ganhou as figurinhas do dia, volte amanhã.');</script>";
+            
         }else{
             echo "<script>alert('Erro ao gerar figurinhas.');</script>";
         }
@@ -41,6 +41,12 @@
         }
         
         return -1;
+    }
+
+    function buscarPerfil($select, $idUser, $conexao){
+        $resultado = mysqli_query($conexao, $select);
+        print_r($resultado);
+        
     }
 
     

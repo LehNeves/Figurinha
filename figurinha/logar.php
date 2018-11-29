@@ -15,7 +15,7 @@
         if(mysqli_num_rows($consulta)<=0){
             echo "<script>alert('Login e/ou senha incorretos');window.location.href='index.html';</script>";
         }else{
-            //Caso exista entra nesse else, e cria uma session com o nome do usuario cadastrado no banco de dados
+            //Caso exista entra nesse else, e cria uma session com o nome do usuario e o id cadastrado no banco de dados
             session_start();
             //Vetor criado com o retorno da consulta MySql, para que possa pegar o nome do usuario
             $vetor = mysqli_fetch_assoc($consulta);

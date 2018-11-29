@@ -19,7 +19,7 @@
             session_start();
             //Vetor criado com o retorno da consulta MySql, para que possa pegar o nome do usuario
             $vetor = mysqli_fetch_assoc($consulta);
-            $_SESSION['idUsuario'] = $vetor['id'];
+            $_SESSION['id'] = $vetor['id'];
             $_SESSION['nome'] = $vetor['nome'];
             echo "<script>window.location.href='logado/';</script>";
         }

@@ -19,10 +19,24 @@
         return $resultado;
     }
 
-    function ganharFigurinhas(){
+    function ganharFigurinhas($conexao){
         $select = "SELECT 'ultimoAcesso', 'ultimaFigurinha' from 'usuarios where 'id' = '$idUser'";
         
 
+    }
+
+    function buscarFigurinhas($idUser, $conexao){
+        $select = "SELECT figurinhas.* FROM figurinhas, usuariosfigurinhas, usuarios WHERE usuarios.id = $idUser AND usuarios.id = usuariosfigurinhas.usuarios_id AND usuariosfigurinhas.figurinha_id = figurinhas.id";
+        $resultado = mysqli_query($conexao, $select);
+        $vetor = Array();  
+        if(mysqli_num_rows($resultado) > 0){
+            foreach($resultado as $key => $valor){
+                array_push($vetor, $valor);
+            }
+            return $vetor;
+        }
+        
+        return -1;
     }
 
 ?>

@@ -14,5 +14,16 @@
     <body>
         <a href="ganhar.php"><button name='ganhar'>Ganhar Figurinhas</button></a>
         <a href="deslogar.php"><button name='deslogar'>Sair</button></a>
+
+        <?php
+            $vetor = buscarFigurinhas($idUser, $conexao);
+            if($vetor != -1){
+                foreach ($vetor as $key => $valor) {
+                    echo "<img src='img/$valor[caminho]' alt=''>";
+                }
+            }else{
+                echo "<p>Voce não possui nenhuma figurinha</p>";
+            }
+        ?>
     </body>
 </html>

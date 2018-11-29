@@ -16,7 +16,12 @@
         <a href="deslogar.php"><button name='deslogar'>Sair</button></a>
 
         <?php
-            $vetor = buscarFigurinhas($idUser, $conexao);
+            $select = "SELECT figurinhas.* 
+            FROM figurinhas, usuariosfigurinhas, usuarios 
+            WHERE usuarios.id = $idUser 
+            AND usuarios.id = usuariosfigurinhas.usuarios_id 
+            AND usuariosfigurinhas.figurinha_id = figurinhas.id";
+            $vetor = buscarFigurinhas($select, $idUser, $conexao);
             if($vetor != -1){
                 foreach ($vetor as $key => $valor) {
                     echo "<img src='img/$valor[caminho]' alt=''>";

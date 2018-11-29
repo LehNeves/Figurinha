@@ -19,14 +19,13 @@
         return $resultado;
     }
 
-    function ganharFigurinhas($conexao){
-        $select = "SELECT 'ultimoAcesso', 'ultimaFigurinha' from 'usuarios where 'id' = '$idUser'";
-        
+    function ganharFigurinhas($conexao, $idUser, $aleatorio){
+        $select = "INSERT INTO usuariosfigurinhas(usuarios_id, figurinha_id) VALUES ($idUser, $aleatorio)";
 
+        
     }
 
-    function buscarFigurinhas($idUser, $conexao){
-        $select = "SELECT figurinhas.* FROM figurinhas, usuariosfigurinhas, usuarios WHERE usuarios.id = $idUser AND usuarios.id = usuariosfigurinhas.usuarios_id AND usuariosfigurinhas.figurinha_id = figurinhas.id";
+    function buscarFigurinhas($select, $idUser, $conexao){
         $resultado = mysqli_query($conexao, $select);
         $vetor = Array();  
         if(mysqli_num_rows($resultado) > 0){
@@ -38,5 +37,7 @@
         
         return -1;
     }
+
+    
 
 ?>

@@ -6,6 +6,7 @@
         echo '<script>alert("Faça o login novamente!");window.location.href="../index.html";</script>';
     }
     $nomeUser = $_SESSION['nome'];
+    $idUser = $_SESSION['id'];
     //Seta o horario de acordo com a região passada
     date_default_timezone_set('America/Sao_Paulo');
     //Função que tem o objetivo de gerar Ultimo acesso e setar no banco de dados que tem como retorno um booleno
@@ -18,5 +19,10 @@
         return $resultado;
     }
 
+    function ganharFigurinhas(){
+        $select = "SELECT 'ultimoAcesso', 'ultimaFigurinha' from 'usuarios where 'id' = '$idUser'";
+        
+
+    }
 
 ?>

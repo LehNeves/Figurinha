@@ -4,9 +4,11 @@
     //Caso não estiver logar o if abaixo falha e o usuario deve acessar novamente.
     if($_SESSION['nome'] == ''){
         echo '<script>alert("Faça o login novamente!");window.location.href="../index.html";</script>';
+        die();
     }
-    $nomeUser = $_SESSION['nome'];
+    $nomeUser = $_SESSION['nome'];    
     $idUser = $_SESSION['id'];
+    
     //Seta o horario de acordo com a região passada
     date_default_timezone_set('America/Sao_Paulo');
     //Função que tem o objetivo de gerar Ultimo acesso e setar no banco de dados que tem como retorno um booleno
@@ -34,7 +36,7 @@
         }
         return -1;
     }
-    function buscarPerfil($select, $idUser, $conexao){
+    function buscarPerfil($select, $conexao){
         $resultado = mysqli_query($conexao, $select);
         $vetor = Array();
         if(mysqli_num_rows($resultado) > 0){
@@ -46,8 +48,8 @@
         return -1;
     }
     function verificarUltimasFigurinhas($idUser, $conexao){
-        $select = "SELECT ultimaFigurinha FROM usuarios WHERE id = $idUser";
-        $rsSelect = buscarPerfil($select, $idUser, $conexao);
+        $select = "SELECT ultimaFigurinha FROM usuarios WHERE id = '$idUser'";
+        $rsSelect = buscarPerfil($select, $conexao);
         foreach ($rsSelect as $key => $value) {
             foreach ($value as $key => $value2) {
                 $dataUltimaFigurinha = $value2;

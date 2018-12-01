@@ -1,7 +1,9 @@
 <?php
     //Chamar o arquivo verificar para poder saber se realmente está logado 
     include 'verificar.php';
-    if(!gerarUltimoAcesso($conexao)){
+    $ultimoAcesso = date('Y/m/d H:i:s', time());
+    $update = "UPDATE `usuarios` SET `ultimoAcesso` = '$ultimoAcesso' WHERE `id` = '$idUser'";
+    if(!alterarDatas($update, $conexao)){
         echo "<script>alert('Erro ao passar Ultimo Acesso');</script>";
     }
 ?>

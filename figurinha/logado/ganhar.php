@@ -4,7 +4,7 @@
     $dateTime = date('Y/m/d', time());
 
     for($i = 0; $i <= 4; $i++){
-        $aleatorio = rand(1, 10);
+        $aleatorio = rand(1, 30);
         ganharFigurinhas($conexao, $idUser, $aleatorio);
     }
 

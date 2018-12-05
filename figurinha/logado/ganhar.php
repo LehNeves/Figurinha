@@ -2,7 +2,7 @@
     include 'verificar.php';
     if(verificarUltimasFigurinhas($idUser, $conexao) == 1){
         for($i = 0; $i <= 4; $i++){
-            $aleatorio = rand(1, 30);
+            $aleatorio = rand(1, 29);
             ganharFigurinhas($conexao, $idUser, $aleatorio);
         }
         echo "<script>alert('Parabéns! Voce Ganhou as figurinhas do dia, volte amanhã.');</script>";

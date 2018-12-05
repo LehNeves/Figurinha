@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Trocar</title>
+        <title>Disponibilizar para Troca</title>
     </head>
     <body>
         <p>
@@ -16,14 +16,15 @@
                     FROM figurinhas, usuariosfigurinhas, usuarios 
                     WHERE usuarios.id = '$idUser' 
                     AND usuarios.id = usuariosfigurinhas.usuarios_id 
-                    AND usuariosfigurinhas.figurinha_id = figurinhas.id";
+                    AND usuariosfigurinhas.figurinha_id = figurinhas.id
+                    AND usuariosfigurinhas.disponivel = 1";
                     $vetor = buscarFigurinhas($select, $idUser, $conexao);
                     if($vetor != -1){
                         foreach ($vetor as $key => $value) {
                             echo "<input type='checkbox' name='array[]' value='".$value['id']."'>".$value['nome']."</br>";
                         }
                     }else{
-                        echo "<p>Voce não possui nenhuma figurinha</p>";
+                        echo "<p>Voce não possui nenhuma figurinha disponivel para troca!</p>";
                     }
                 ?>
                 <button type="submit" name="trocar">Trocar</button>

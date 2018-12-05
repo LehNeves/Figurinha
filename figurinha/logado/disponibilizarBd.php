@@ -11,12 +11,13 @@
 
     foreach ($vetor as $key => $value) {
         $insert = "INSERT INTO troca VALUES (null, $vetor[$key], $idUser)";
-        $update = "UPDATE `usuariosfigurinhas` SET `disponivel` = 0 WHERE `usuarios_id` = '$idUser' AND `figurinha_id` = '$vetor[$key]'";
-        if(!inserirTrocas($insert, $conexao)){
-            break;
+        $update = "UPDATE `usuariosfigurinhas` SET `disponivel` = 0 WHERE `usuarios_id` = $idUser AND `figurinha_id` = '$vetor[$key]'";
+        if(inserirTrocas($insert, $conexao)){
+            if(!alterarDisponibilidade($update, $conexao)){
+                break;
+            }
         }
-        if(!alterarDisponibilidade($update, $conexao)){
-            break;
-        }
+        
     }
+    echo "<script>alert('Sucesso!');window.location.href='index.php';</script>";
 ?>

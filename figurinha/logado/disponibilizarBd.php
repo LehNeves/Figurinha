@@ -3,7 +3,7 @@
     include 'verificar.php';
 
     if(empty($_POST['array'])){
-        echo "<script>alert('Erro ao receber Figurinhas');window.location.href='index.php';</script>";
+        echo "<script>alert('Erro ao receber Figurinhas do Checkbox');window.location.href='index.php';</script>";
         die();
     }
 
@@ -17,7 +17,6 @@
                 break;
             }
         }
-        
     }
     echo "<script>alert('Sucesso!');window.location.href='index.php';</script>";
 ?>

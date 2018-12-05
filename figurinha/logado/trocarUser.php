@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Trocar</title>
+        <title>Selecionar Figurinhas para Troca</title>
     </head>
     <style>
         table, th, td {
@@ -15,31 +15,32 @@
         }   
     </style>
     <body>
-        <h1>Selecionar Figurinhas para Troca</h1>
+        <h1>Selecionar Suas Figurinhas para Troca</h1>
         <p>
-            <form action="trocarUser.php" method="post">
+            <form action="trocarBd.php" method="post">
                 <table>
                     <tr>
                         <th>#</th>
-                        <th>Id Usuario</th>
                         <th>Nome da Figurinha</th>
                     </tr>
                     <?php
-                        $select = "SELECT figurinhas.nome, usuarios.id, usuariosfigurinhas.id as ufid
+                        if(empty($_POST['figOutroUser'])){
+                            echo "<script>alert('Erro ao receber Figurinhas do Checkbox');window.location.href='index.php';</script>";
+                            die();
+                        }
+                        $_SESSION['figOutroUser'] = $_POST['figOutroUser'];
+                        $select = "SELECT figurinhas.nome, usuariosfigurinhas.id as ufid
                         FROM figurinhas, usuariosfigurinhas, usuarios 
-                        WHERE usuarios.id <> '$idUser'
+                        WHERE usuarios.id = '$idUser'
                         AND usuarios.id = usuariosfigurinhas.usuarios_id 
                         AND usuariosfigurinhas.figurinha_id = figurinhas.id
-                        AND usuariosfigurinhas.disponivel = 0";
+                        AND usuariosfigurinhas.disponivel = 1";
                         $vetor = buscarFigurinhas($select, $idUser, $conexao);
                         if($vetor != -1){
                             foreach ($vetor as $key => $value) {
                                 echo '<tr>';
                                 echo '<td>';
-                                echo "<input type='checkbox' name='figOutroUser[]' value='".$value['ufid']."'>";
-                                echo '</td>';
-                                echo '<td>';
-                                echo $value['id'];
+                                echo "<input type='checkbox' name='figEsteUser[]' value='".$value['ufid']."'>";
                                 echo '</td>';
                                 echo '<td>';
                                 echo $value['nome'];
@@ -47,13 +48,11 @@
                                 echo '</tr>';
                             }
                         }else{
-                            echo "<p>Não há figurinhas disponiveis para troca!</p>";
+                            echo "<p>Voce não possui nenhuma figurinha disponivel para troca!</p>";
                         }
-                        echo '</tr>';
                     ?>
-                    <button type="submit">Trocar</button>
-                    <a href="index.php"><button type='button'>Voltar</button></a>
-                </table>
+                    </table>
+                <button type="submit" name="trocar">Trocar</button>
             </form>
         </p>
     </body>

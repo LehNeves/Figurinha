@@ -34,9 +34,11 @@
                         $vetor = buscarFigurinhas($select, $idUser, $conexao);
                         if($vetor != -1){
                             foreach ($vetor as $key => $value) {
+                                print_r($value);
                                 echo '<tr>';
                                 echo '<td>';
-                                echo "<input type='checkbox' name='figOutroUser[]' value='".$value['ufid']."'>";
+                                $string = $value['id']. ',' . $value['ufid'];  
+                                echo "<input type='checkbox' name='outroUser[]' value='".$string."'>";
                                 echo '</td>';
                                 echo '<td>';
                                 echo $value['id'];

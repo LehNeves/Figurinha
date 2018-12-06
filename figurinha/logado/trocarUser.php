@@ -24,11 +24,12 @@
                         <th>Nome da Figurinha</th>
                     </tr>
                     <?php
-                        if(empty($_POST['figOutroUser'])){
+                        if(empty($_POST['outroUser'])){
                             echo "<script>alert('Erro ao receber Figurinhas do Checkbox');window.location.href='index.php';</script>";
                             die();
                         }
-                        $_SESSION['figOutroUser'] = $_POST['figOutroUser'];
+                        print_r($_POST['outroUser']);
+                        $_SESSION['outroUser'] = $_POST['outroUser'];
                         $select = "SELECT figurinhas.nome, usuariosfigurinhas.id as ufid
                         FROM figurinhas, usuariosfigurinhas, usuarios 
                         WHERE usuarios.id = '$idUser'

@@ -85,4 +85,12 @@
             return false;
         }
     }
+
+    function update($update, $conexao){
+        if(mysqli_query($conexao, $update)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 ?>

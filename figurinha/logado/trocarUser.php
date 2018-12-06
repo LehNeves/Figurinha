@@ -25,10 +25,9 @@
                     </tr>
                     <?php
                         if(empty($_POST['outroUser'])){
-                            echo "<script>alert('Erro ao receber Figurinhas do Checkbox');window.location.href='index.php';</script>";
+                            echo "<script>alert('Erro ao receber Figurinha do radio');window.location.href='index.php';</script>";
                             die();
                         }
-                        print_r($_POST['outroUser']);
                         $_SESSION['outroUser'] = $_POST['outroUser'];
                         $select = "SELECT figurinhas.nome, usuariosfigurinhas.id as ufid
                         FROM figurinhas, usuariosfigurinhas, usuarios 
@@ -41,7 +40,7 @@
                             foreach ($vetor as $key => $value) {
                                 echo '<tr>';
                                 echo '<td>';
-                                echo "<input type='checkbox' name='figEsteUser[]' value='".$value['ufid']."'>";
+                                echo "<input type='radio' name='figEsteUser' value='".$value['ufid']."'>";
                                 echo '</td>';
                                 echo '<td>';
                                 echo $value['nome'];

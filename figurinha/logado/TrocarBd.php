@@ -1,38 +1,19 @@
 <?php
     //Chamar o arquivo verificar para poder saber se realmente está logado 
     include 'verificar.php';
-
     $outroUser = $_SESSION['outroUser'];
     if(empty($_POST['figEsteUser'])){
         echo "<script>alert('Erro ao receber Figurinhas do Checkbox');window.location.href='index.php';</script>";
         die();
     }
-
     $figEsteUser = $_POST['figEsteUser'];
-
-    if(count($outroUser) != count($figEsteUser)){
-        echo "<script>alert('A quantidade de figurinhas não correspondem!');window.location.href='index.php';</script>";
-        die();
+    $user = explode(",", $outroUser);
+    $update = "UPDATE `usuariosfigurinhas` SET `usuario_id` = $user[0],`disponivel` = 1 WHERE `id` = '$figEsteUser'";
+    if(!update($update, $conexao)){
+        echo "<script>alert('Erro ao trocar Figurinha');window.location.href='index.php';</script>";
     }
-    foreach ($outroUser as $key => $value) {
-        $users = explode(",", $value);
-        print_r($users);
+    $update2 = "UPDATE `usuariosfigurinhas` SET `usuario_id` = $idUser,`disponivel` = 1 WHERE `id` = '$user[1]'";
+    if(!update($update2, $conexao)){
+        echo "<script>alert('Erro ao trocar Figurinha');window.location.href='index.php';</script>";
     }
-    
-    // 
-
-    // if(count($figEsteUser) != count($figOutroUser)){
-    //     
-    // }
-
-    // print_r($figEsteUser);
-
-    // for ($i=0; $i <= count($figEsteUser); $i++) { 
-    //     $fig1 = $figEsteUser[$i];
-    //     $fig2 = $figOutroUser[$i];
-    //     print_r($fig1);
-    //     print_r($fig2);
-
-    // }
-
 ?>

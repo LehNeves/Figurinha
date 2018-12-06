@@ -71,7 +71,6 @@
             return true;
         }else{
             echo "<script>alert('Erro ao inserir figurinhas pra troca.');</script>";
-            header('Location : index.php');
             return false;
         }
     }
@@ -81,7 +80,6 @@
             return true;
         }else{
             echo "<script>alert('Erro ao tirar disponibilidade de Figurinhas.');</script>";
-            header('Location : index.php');
             return false;
         }
     }

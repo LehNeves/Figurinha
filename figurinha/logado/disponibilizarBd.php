@@ -14,6 +14,7 @@
         $update = "UPDATE `usuariosfigurinhas` SET `disponivel` = 0 WHERE `usuarios_id` = $idUser AND `figurinha_id` = '$vetor[$key]'";
         if(inserirTrocas($insert, $conexao)){
             if(!alterarDisponibilidade($update, $conexao)){
+                echo "<script>alert('Erro ao inserir trocas no BD!');window.location.href='index.php';</script>";
                 break;
             }
         }
